@@ -27,7 +27,7 @@ public class CustomRipple
         public Ripple(double xPos, double yPos, double buttonWidth)
         {
             super(xPos, yPos, 0, null);
-            setFill(Color.rgb(71, 130, 197, 1));
+            setFill(Color.GREEN);
         }
     }
 
@@ -37,7 +37,7 @@ public class CustomRipple
         double width = node.getLayoutBounds().getWidth();
         double height = node.getLayoutBounds().getHeight();
         //37 is the upper part of the border pane
-        Node mask = new Rectangle(bounds.getMinX(), bounds.getMinY() + 37, width, height);
+        Node mask = new Rectangle(bounds.getMinX(), bounds.getMinY(), width, height);
         Ripple ripple = new Ripple(screenX, screenY, node.getLayoutBounds().getWidth());
         pane.getChildren().add(0, ripple);
         ripple.setClip(mask);

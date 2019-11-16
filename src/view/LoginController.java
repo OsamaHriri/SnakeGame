@@ -51,27 +51,11 @@ public class LoginController {
     MediaPlayer mediaPlayer;
 
 
-
     public void initialize(URL arg, ResourceBundle arg1) {
-        loginbtn.setStyle(
-                " -fx-background-color : #c3c4c4, linear-gradient(#d6d6d6 50%, white 100%), radial-gradient(center 50% -40%, radius 200%, #e6e6e6 45%, rgba(230,230,230,0) 50%);"
-                        + " -fx-background-radius : 30;" + " -fx-background-insets: 0,1,1;" + " -fx-text-fill: black;"
-                        + " -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 3, 0.0 , 0 , 1)");
 
 
-
-        emailtxt.setStyle(emailtxt.getStyle() + "-fx-text-fill:white;");
-        pswrdtxt.setStyle(pswrdtxt.getStyle() + "-fx-text-fill:white;");
-        Media media = new Media("file:///C:/Users/fadod/git/nemo_ships/src/Media/vid.mp4");
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setAutoPlay(true);
-        mediaPlayer.play();
-        DoubleProperty mvw = mv_video.fitWidthProperty();
-        DoubleProperty mvh = mv_video.fitHeightProperty();
-        mvw.bind(Bindings.selectDouble(mv_video.sceneProperty(), "width"));
-        mvh.bind(Bindings.selectDouble(mv_video.sceneProperty(), "height"));
-        mv_video.setPreserveRatio(true);
-        mv_video.setMediaPlayer(mediaPlayer);
+        emailtxt.setStyle(emailtxt.getStyle() + "-fx-text-inner-color:white;");
+        pswrdtxt.setStyle(pswrdtxt.getStyle() + "-fx-text-inner-color:white;");
 
         btnMinus.setOnAction(new EventHandler<ActionEvent>() {
 
@@ -85,20 +69,21 @@ public class LoginController {
     }
 
 
-    public void handleLink(ActionEvent event){
-        Parent root;
-        try {
-            Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
-            root = FXMLLoader.load(getClass().getResource("C_SignUp.fxml"));
-            stage.setMaximized(true);
-            stage.setScene(new Scene(root));
-            mediaPlayer.stop();
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void handleLink(ActionEvent event) {
+//        Parent root;
+//        try {
+//            Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
+//            root = FXMLLoader.load(getClass().getResource("C_SignUp.fxml"));
+//            stage.setMaximized(true);
+//            stage.setScene(new Scene(root));
+//            mediaPlayer.stop();
+//            stage.show();
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
     }
+
     public void loginOnAction() {
         String email = emailtxt.getText();
         String pw = pswrdtxt.getText();
@@ -108,37 +93,24 @@ public class LoginController {
             ViewLogic.initUIAdmin();
             return;
         }
-        if (email.equals("c") && pw.equals("c")) {
-            mediaPlayer.stop();
-            ((Stage) btnExit.getScene().getWindow()).close();
-            ViewLogic.onSignin("fadi@hotmail.com");
-            ViewLogic.initUI();
-            return;
-        }
         if (validate("Email", email, "[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+")
                 && emptyValidation("Password", pw.isEmpty())) {
-            //     for (Person p : Control.getInstance().selectPerson()) {
-            //         if (p.getEmail().equals(email) && p.getPassword().equals(pw)) {
-          //  mediaPlayer.stop();
             ((Stage) btnExit.getScene().getWindow()).close();
             ViewLogic.onSignin(email);
             ViewLogic.initUI();
             return;
-            //      }
         }
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Please Enter Valid Details");
-            alert.setHeaderText(null);
-            alert.showAndWait();
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Please Enter Valid Details");
+        alert.setHeaderText(null);
+        alert.showAndWait();
 
-        }
-
-
+    }
 
 
     public void buttOnMouseEntered() {
         loginbtn.setStyle(
-                " -fx-background-color :  #4BB3A9 ;-fx-background-radius : 30");
+                " -fx-background-color :  green ;-fx-background-radius : 30");
     }
 
     public void buttOnMouseExited() {

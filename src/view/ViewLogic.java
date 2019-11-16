@@ -12,7 +12,6 @@ import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import model.Person;
 
 /**
  * Class U_ViewLogic ~ manages the windows in the system
@@ -26,7 +25,7 @@ public class ViewLogic {
 	protected static String currentUserID;
 
 	protected static LoginController sampleController;
-	protected static MainPageController sampleController2;
+	protected static MainScreenController sampleController2;
 	/*
 	 * protected static AdminPlayerController adminPlayerController; protected
 	 * static AdminCoachController adminCoachController; protected static
@@ -117,7 +116,7 @@ public class ViewLogic {
 		Stage stage = new Stage();
 		stage.setMaximized(true);
 		stage.initStyle(StageStyle.UNDECORATED);
-		newWindow(ViewLogic.class.getResource("Board.fxml"), stage, null, null, null, null, null, null, false,
+		newWindow(ViewLogic.class.getResource("MainScreen.fxml"), stage, null, null, null, null, null, null, false,
 				"UserWindow", false);
 	}
 
@@ -125,7 +124,7 @@ public class ViewLogic {
 		Stage stage = new Stage();
 		stage.setMaximized(true);
 		stage.initStyle(StageStyle.UNDECORATED);
-		newWindow(ViewLogic.class.getResource("Board.fxml"), stage, null, null, null, null, null, null, false,
+		newWindow(ViewLogic.class.getResource("MainScreen.fxml"), stage, null, null, null, null, null, null, false,
 				"UserWindow", false);
 
 	}
