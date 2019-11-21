@@ -1,15 +1,5 @@
 package view;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
-import javafx.scene.effect.DropShadow;
-import javafx.scene.paint.Color;
-import model.CustomRipple;
-import model.Toast;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -23,6 +13,14 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import model.CustomRipple;
+import model.Toast;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
 
 public class MainScreenController implements Initializable {
     @FXML
@@ -77,7 +75,7 @@ public class MainScreenController implements Initializable {
                         btnGame.setStyle("-fx-background-color :  black");
                         Parent root;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("Start.fxml"));
                             borderPane.setCenter(root);
                         } catch (IOException e) {
                             e.printStackTrace();
