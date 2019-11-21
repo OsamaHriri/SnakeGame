@@ -20,7 +20,7 @@ public class Main extends Application {
         try {
             root = FXMLLoader.load(getClass().getResource("Login.fxml"));
             primaryStage.setMaximized(true);
-            System.out.print("Hii");
+            System.out.print("Hiibye");
             primaryStage.initStyle(StageStyle.UNDECORATED);
             primaryStage.setScene(new Scene(root));
             primaryStage.show();
