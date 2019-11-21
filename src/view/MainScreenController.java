@@ -110,7 +110,7 @@ public class MainScreenController implements Initializable {
                         btnSettings.setStyle("-fx-background-color : black");
                         Parent root;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("QuestionsManagement.fxml"));
                             borderPane.setCenter(root);
 
                         } catch (IOException e) {
