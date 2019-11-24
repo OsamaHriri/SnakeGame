@@ -1,14 +1,227 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="view.QuickGuide"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<ScrollPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <content>
+      <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="1920.0">
+         <children>
+            <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="960.0">
+               <children>
+                  <VBox prefHeight="1080.0" prefWidth="600.0">
+                     <children>
+                        <VBox alignment="CENTER" prefHeight="123.0" prefWidth="600.0">
+                           <children>
+                              <Label prefHeight="81.0" prefWidth="363.0" text="Key Bindings">
+                                 <font>
+                                    <Font name="Calibri Light" size="70.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </VBox>
+                        <HBox prefHeight="894.0" prefWidth="676.0">
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                           <children>
+                              <VBox prefHeight="894.0" prefWidth="300.0">
+                                 <children>
+                                    <Label text="Move Up">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Move Down">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Move Left">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Move Right">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Pause">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <Label text="Menu">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="30.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="TOP_RIGHT" prefHeight="894.0" prefWidth="300.0">
+                                 <children>
+                                    <Label prefHeight="88.0" prefWidth="49.0" text="↑">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label text="↓">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label text="←">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label text="→">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label text="P">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" />
+                                       </padding>
+                                    </Label>
+                                    <Label text="ECS">
+                                       <font>
+                                          <Font name="Calibri Light" size="50.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="30.0" />
+                                       </padding>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </HBox>
+                     </children>
+                     <HBox.margin>
+                        <Insets top="100.0" />
+                     </HBox.margin>
+                  </VBox>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="960.0">
+               <children>
+                  <ScrollPane prefHeight="200.0" prefWidth="960.0">
+                     <content>
+                        <VBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="960.0">
+                           <children>
+                              <Label text="How To Play">
+                                 <VBox.margin>
+                                    <Insets top="100.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font name="Calibri Light" size="70.0" />
+                                 </font>
+                              </Label>
+                              <VBox alignment="CENTER" prefHeight="486.0" prefWidth="960.0">
+                                 <children>
+                                    <Label text="This is the snake">
+                                       <font>
+                                          <Font name="Calibri Light" size="43.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <ImageView fitHeight="356.0" fitWidth="399.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../images/Annotation%202019-11-19%20173353.png" />
+                                       </image>
+                                    </ImageView>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="TOP_CENTER" prefHeight="626.0" prefWidth="960.0">
+                                 <children>
+                                    <Label text="These are the Objectives">
+                                       <font>
+                                          <Font name="Calibri Light" size="43.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets bottom="20.0" top="20.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="512.0" prefWidth="960.0">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0">
+                                             <children>
+                                                <ImageView fitHeight="200.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/Fruits_-_Filled_outline-10-512.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="196.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </VBox>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0">
+                                             <children>
+                                                <ImageView fitHeight="220.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true">
+                                                   <image>
+                                                      <Image url="@../images/fruit-apple-food-vegetarian-diet-healthy-food-vegan-organic-512.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <ImageView fitHeight="210.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" />
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox prefHeight="200.0" prefWidth="100.0" />
+                           </children>
+                        </VBox>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </HBox>
+         </children>
+      </HBox>
+   </content>
+   <padding>
+      <Insets top="40.0" />
+   </padding>
+</ScrollPane>
