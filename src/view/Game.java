@@ -8,7 +8,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 
-public class StartGameController   {
+public class Game {
     @FXML
     private Button startbtn;
 

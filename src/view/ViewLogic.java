@@ -24,8 +24,8 @@ public class ViewLogic {
 	// protected static SysData sysData;
 	protected static String currentUserID;
 
-	protected static LoginController sampleController;
-	protected static MainScreenController sampleController2;
+	protected static Login sampleController;
+	protected static MainScreen sampleController2;
 	/*
 	 * protected static AdminPlayerController adminPlayerController; protected
 	 * static AdminCoachController adminCoachController; protected static

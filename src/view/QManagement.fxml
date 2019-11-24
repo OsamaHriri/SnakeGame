@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fx:id="scrollPane" prefHeight="2000.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.HistoryController">
+<ScrollPane fx:id="scrollPane" prefHeight="2000.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.QManagement">
     <content>
         <VBox fx:id="vbox" alignment="TOP_CENTER" fillWidth="false" prefHeight="2005.0" prefWidth="1280.0" spacing="30.0" style="-fx-background-color: bloack;">
             <children>
@@ -82,15 +82,39 @@
                <children>
                   <BorderPane fx:id="bpUsers1" onMouseEntered="#glow" onMouseExited="#clearGlow" prefHeight="400.0" prefWidth="380.0" style="-fx-background-color: black; -fx-background-radius: 30;">
                      <center>
-                        <VBox alignment="CENTER" prefHeight="403.0" prefWidth="280.0" spacing="50.0" BorderPane.alignment="CENTER">
+                        <VBox alignment="CENTER" prefHeight="403.0" prefWidth="280.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <TextField promptText="Question Body" />
-                              <TextField promptText="Answer 1" />
-                              <TextField promptText="Answer 2" />
-                              <TextField promptText="Answer 3" />
-                              <TextField promptText="Answer 4" />
-                              <Button mnemonicParsing="false" text="Insert" />
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Question Body" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 1" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 2" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 3" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 4" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Insert" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></Button>
                            </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding>
                         </VBox>
                      </center>
                      <HBox.margin>
@@ -99,17 +123,44 @@
                   </BorderPane>
                   <BorderPane fx:id="bpOrders1" onMouseEntered="#glow" onMouseExited="#clearGlow" prefHeight="400.0" prefWidth="380.0" style="-fx-background-color: black; -fx-background-radius: 30;">
                      <center>
-                        <VBox alignment="CENTER" prefHeight="151.0" prefWidth="208.0" spacing="50.0" BorderPane.alignment="CENTER">
+                        <VBox alignment="CENTER" prefHeight="151.0" prefWidth="208.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ComboBox prefWidth="150.0" />
-                              <Label text="Label" textFill="WHITE" />
-                              <TextField promptText="Question Body" />
-                              <TextField promptText="Answer 1" />
-                              <TextField promptText="Answer 2" />
-                              <TextField promptText="Answer 3" />
-                              <TextField promptText="Answer 4" />
-                              <Button mnemonicParsing="false" text="Update" />
+                              <ComboBox prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50;" />
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50;" text="QuestionBody" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Label>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Question Body" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 1" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 2" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 3" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <TextField alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 4" style="-fx-background-radius: 50;">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font></TextField>
+                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Update" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></Button>
                            </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding>
                         </VBox>
                      </center>
                      <HBox.margin>
@@ -118,16 +169,28 @@
                   </BorderPane>
                   <BorderPane fx:id="bpProfit1" onMouseEntered="#glow" onMouseExited="#clearGlow" prefHeight="400.0" prefWidth="380.0" style="-fx-background-color: black; -fx-background-radius: 30;">
                      <center>
-                        <VBox alignment="TOP_CENTER" spacing="50.0" BorderPane.alignment="CENTER">
+                        <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ComboBox prefWidth="150.0">
+                              <ComboBox prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50;">
                                  <VBox.margin>
                                     <Insets top="80.0" />
                                  </VBox.margin>
                               </ComboBox>
-                              <Label text="Label" textFill="WHITE" />
-                              <Button mnemonicParsing="false" text="Delete" />
-                           </children></VBox>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50;" text="QuestionBody" textAlignment="CENTER" textFill="WHITE">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font></Label>
+                              <Button mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Delete" textFill="WHITE">
+                                 <font>
+                                    <Font size="25.0" />
+                                 </font></Button>
+                           </children>
+                           <BorderPane.margin>
+                              <Insets />
+                           </BorderPane.margin>
+                           <padding>
+                              <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                           </padding></VBox>
                      </center>
                      <HBox.margin>
                         <Insets top="40.0" />

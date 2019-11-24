@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class MainScreenController implements Initializable {
+public class MainScreen implements Initializable {
     @FXML
     private Button btnGame;
     @FXML
@@ -30,7 +30,7 @@ public class MainScreenController implements Initializable {
     @FXML
     private Button btnHistory;
     @FXML
-    private Button btnSettings;
+    private Button btnQuestions;
     @FXML
     private Button btnSignout;
     @FXML
@@ -52,7 +52,7 @@ public class MainScreenController implements Initializable {
 
         Parent root;
         try {
-            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+            root = FXMLLoader.load(getClass().getResource("History.fxml"));
             borderPane.setCenter(root);
         } catch (IOException e) {
             e.printStackTrace();
@@ -61,7 +61,7 @@ public class MainScreenController implements Initializable {
         buttonList.add(btnGame);
         buttonList.add(btnQuickGuide);
         buttonList.add(btnHistory);
-        buttonList.add(btnSettings);
+        buttonList.add(btnQuestions);
         buttonList.add(btnSignout);
         for (Button b : buttonList) {
             b.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -75,7 +75,7 @@ public class MainScreenController implements Initializable {
                         btnGame.setStyle("-fx-background-color :  black");
                         Parent root;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("Start.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
                             borderPane.setCenter(root);
                         } catch (IOException e) {
                             e.printStackTrace();
@@ -85,7 +85,7 @@ public class MainScreenController implements Initializable {
                         btnQuickGuide.setStyle("-fx-background-color : black");
                         Parent root;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("QuickGuide.fxml"));
                             borderPane.setCenter(root);
 
                         } catch (IOException e) {
@@ -97,18 +97,18 @@ public class MainScreenController implements Initializable {
                         btnHistory.setStyle("-fx-background-color : black");
                         Parent root;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("Game.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("History.fxml"));
                             borderPane.setCenter(root);
 
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
                     }
-                    if (event.getSource() == btnSettings) {
-                        btnSettings.setStyle("-fx-background-color : black");
+                    if (event.getSource() == btnQuestions) {
+                        btnQuestions.setStyle("-fx-background-color : black");
                         Parent root;
                         try {
-                            root = FXMLLoader.load(getClass().getResource("QuestionsManagement.fxml"));
+                            root = FXMLLoader.load(getClass().getResource("QManagement.fxml"));
                             borderPane.setCenter(root);
 
                         } catch (IOException e) {
@@ -139,7 +139,7 @@ public class MainScreenController implements Initializable {
         btnGame.setStyle("-fx-background-color :  green");
         btnQuickGuide.setStyle("-fx-background-color :   green");
         btnHistory.setStyle("-fx-background-color :   green");
-        btnSettings.setStyle("-fx-background-color :   green");
+        btnQuestions.setStyle("-fx-background-color :   green");
         btnSignout.setStyle("-fx-background-color :  green");
     }
 

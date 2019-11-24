@@ -10,7 +10,7 @@ import javafx.scene.paint.Color;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class HistoryController {
+public class History {
 
     public void initialize(URL arg0, ResourceBundle arg1) {
     }

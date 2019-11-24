@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LoginController {
+public class Login {
 
     @FXML
     private Button loginbtn;
