@@ -69,18 +69,17 @@ public class Login {
     }
 
 
-    public void handleLink(ActionEvent event) {
-//        Parent root;
-//        try {
-//            Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
-//            root = FXMLLoader.load(getClass().getResource("C_SignUp.fxml"));
-//            stage.setMaximized(true);
-//            stage.setScene(new Scene(root));
-//            mediaPlayer.stop();
-//            stage.show();
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    public void handleLink(ActionEvent event){
+        Parent root;
+        try {
+            Stage stage = (Stage) ((Hyperlink) event.getSource()).getScene().getWindow();
+            root = FXMLLoader.load(getClass().getResource("Register.fxml"));
+            stage.setMaximized(true);
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
     }
 
@@ -110,12 +109,12 @@ public class Login {
 
     public void buttOnMouseEntered() {
         loginbtn.setStyle(
-                " -fx-background-color :  green ;-fx-background-radius : 30");
+                " -fx-background-color :  black ;-fx-background-radius : 30");
     }
 
     public void buttOnMouseExited() {
         loginbtn.setStyle(
-                " -fx-background-color : white ;-fx-background-radius : 30");
+                " -fx-background-color : green ;-fx-background-radius : 30");
     }
 
     /**
