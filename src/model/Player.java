@@ -1,9 +1,8 @@
 package model;
 
 import java.sql.Date;
-import java.time.LocalDate;
 
-public class Person {
+public class Player {
 	private String personID;
 	private String firstName;
 	private String surName;
@@ -11,9 +10,10 @@ public class Person {
 	private String phone;
 	private String email;
 	private String password;
+	private int maxPoints;
 
-	public Person(String personID, String firstName, String surName, Date dateOfBirth, String phone, String email,
-			String password) {
+	public Player(String personID, String firstName, String surName, Date dateOfBirth, String phone, String email,
+				  String password) {
 		super();
 		this.personID = personID;
 		this.firstName = firstName;
@@ -92,7 +92,7 @@ public class Person {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		Player other = (Player) obj;
 		if (dateOfBirth == null) {
 			if (other.dateOfBirth != null)
 				return false;
