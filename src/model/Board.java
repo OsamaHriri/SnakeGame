@@ -267,9 +267,12 @@ public class Board {
 		
 		int foodX = 0, foodY = 0; // foodX, foodY - coordinates for normal fruit, with s for super
 		int []place; // place on board, will hold X and Y
-		
+
 		if(fruits.size() <= 0) { // if there's no fruit
 
+			place = placeFruit();
+			foodX = place[0];
+			foodY = place[1];
 
 			addFruit(foodX, foodY);
 
@@ -289,8 +292,8 @@ public class Board {
 		int helpX, helpY, foodX = 0, foodY = 0;
 		boolean helpS;	// for Snake and Obstacles
 		boolean collision = true;
-
-		while(collision) {
+		helpS =  false;
+		while(!helpS) {
 				
 			helpS =  false;
 			foodX = (rand.nextInt(BWIDTH)*GameObject.SIZE)+GameObject.SIZE/2;

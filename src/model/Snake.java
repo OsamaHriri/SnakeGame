@@ -24,6 +24,7 @@ public class Snake {
 
         body = new ArrayList<>();
         head = new BodyPart(headX, headY);
+        System.out.printf("Head:(" + headX +","+ headY+")");
         size = 0;
         setStart();
     }

@@ -24,7 +24,10 @@ import javafx.stage.Stage;
 
 public class MainGameView
 {
-
+    /**
+     * Variable to control snake's speed
+     */
+    private int speedConstraint = 3;
     /**
      * Width of the game board
      */
@@ -89,7 +92,7 @@ public class MainGameView
 
 
 
-        System.out.print("Renders\n");
+
     }
 
 
@@ -99,6 +102,7 @@ public class MainGameView
     public void render() {
 
         this.state = Controller.getState(); // get the actual game state
+
         switch(state) { // checks for actual game state
 
             case Started:	// if game state is Started display the starting screen
@@ -169,8 +173,10 @@ public class MainGameView
             c = new Circle(snakeX , snakeY, GameObject.SIZE/2);
             c.setFill(bodyColor);
             canvas.getChildren().add(c);
+            ;
 
-        }//System.out.print("snake printed");
+        }
+    //System.out.print("snake printed");
         // loading fruits to canvas
         for(int i = 0; i < fruits.size(); ++i) {
             helpX = fruits.get(i).getX();
@@ -193,9 +199,10 @@ public class MainGameView
 
       //  grid.add(stack, 0, 1);
       //  grid.add(canvas, 0, 0);
+        Scene s = canvas.getScene();
+        s.setRoot(canvas);
+        Game.stage.setScene(s);
 
-        //scene.setRoot(grid);
-       // stage.setScene(scene);
     }
 
     /**
@@ -298,19 +305,17 @@ public class MainGameView
           boolean start = arguments[6];
           boolean keyActive = arguments[7];
 
-        System.out.println(e.getCode().getName());
+
         switch(e.getCode()) {
 
             case UP:
-                System.out.printf("Up Pressed");
-                System.out.println( !down + "" + keyActive + state);
-                System.out.println(up);
+
                 if(!down && keyActive && state == GameState.Running) {
                     Controller.getInstance().setUp(true);
                     Controller.getInstance().setLeft(false);
                     Controller.getInstance().setRight(false);
                     Controller.getInstance().setKatActive(false);
-                    System.out.print(Controller.getInstance().getArguments()[0]);
+
 
                 }
                 break;
@@ -372,9 +377,10 @@ public class MainGameView
 
         new AnimationTimer(){
 
-
+            int i=0;
             @Override
             public void handle(long now) {
+
                 int dy = Controller.getInstance().getDy() ;
                 int dx = Controller.getInstance().getDx() ;
                 boolean[] arguments = Controller.getInstance().getArguments();
@@ -437,13 +443,17 @@ public class MainGameView
                 }
                 // when game is running, make movement
                 if(state == GameState.Running) {
-
-                        Controller.getInstance().move(dx, dy);
-
+                    if(i==5) {
+                        System.out.printf("before:" + snake.getHead().getX() + " " + snake.getHead().getY() + "moving to: (" + dx + "" + dy + ")\n");
+                        Controller.getInstance().move(dx, dy, snake);
+                        System.out.printf("after:" + snake.getHead().getX() + " " + snake.getHead().getY() + "moving to: (" + dx + "" + dy + ")\n");
+                        render();
                         Controller.getInstance().setKatActive(true); // unlock possibility to press another key after snake made it's move
-                         // counter to slow down the snake
 
-
+                        //  System.out.printf(snake.getHead().getX()+" "+snake.getHead().getY()+"moving to: ("+dx+""+dy+")\n");
+                        i=0;
+                    }
+                    ++i;
                 }
                 /*System.out.print("up is:"+up);
                 System.out.print(" down is:"+down);

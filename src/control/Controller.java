@@ -62,7 +62,7 @@ public class Controller{
         state = GameState.Started;
         up = down = right = left = pause = resume = start = false;
         view = new MainGameView();
-        System.out.print("View intiated");
+
         snake = view.getSnake();
         head = snake.getHead();
         board = view.getBoard();
@@ -164,15 +164,17 @@ public class Controller{
      * @param dx - movement in X-axis, 1 for right, -1 for left
      * @param dy - movement in Y-axis, 1 for down, -1 for up
      */
-    public void move(int dx, int dy) {
-        System.out.printf("Moving Towreds" + dx +" "+ dy + "\n");
+    public void move(int dx, int dy , Snake s) {
+             BodyPart head = s.getHead();
         if(dx != 0 || dy != 0) { // if snake is meant to move
 
             // temporary variables to hold BodyParts
             BodyPart prev = new BodyPart(head.getX(), head.getY()), next = new BodyPart(head.getX(), head.getY());
 
             // move head in X-axis
+
             head.setX(head.getX()+(dx*GameObject.SIZE));
+
 
             // check if head didn't go beyond screen(>WIDTH or <0), if yes set it on the other side
             if(head.getX() > MainGameView.WIDTH) {
@@ -183,8 +185,10 @@ public class Controller{
             }
 
             // move head in Y-axis
+
             head.setY(head.getY()+(dy*GameObject.SIZE));
 
+            //System.out.printf(temp1+"->"+temp+" ");
             // check if head didn't go beyond screen(>HEIGHT or <0), if yes set it on the other side
             if(head.getY() > MainGameView.HEIGHT) {
                 // for 2 points next to ScoreView panel
@@ -197,13 +201,13 @@ public class Controller{
             }
 
             // moving the snake's body, each point gets the position of the one in front
-            for(int i = 1; i < snake.getSize(); ++i) {
+            for(int i = 1; i < s.getSize(); ++i) {
 
-                next.setX( snake.getBodyPart(i).getX());
-                next.setY( snake.getBodyPart(i).getY());
+                next.setX( s.getBodyPart(i).getX());
+                next.setY( s.getBodyPart(i).getY());
 
-                snake.getBodyPart(i).setX(prev.getX());
-                snake.getBodyPart(i).setY(prev.getY());
+                s.getBodyPart(i).setX(prev.getX());
+                s.getBodyPart(i).setY(prev.getY());
                 prev.setX(next.getX());
                 prev.setY(next.getY());
             }
@@ -315,7 +319,6 @@ public class Controller{
     public void update() {
 
         board.updateFruit(); // updates the state of fruits
-
         board.checkEaten(); // check if a fruit has been eaten
 
         if(board.checkCollision() == GameState.Finished) { // check if a collision occurred
