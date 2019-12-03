@@ -1,8 +1,5 @@
 package control;
 
-import model.Game;
-import model.Question;
-
 import java.util.ArrayList;
 
 public class SysData {
