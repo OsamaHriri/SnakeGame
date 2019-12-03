@@ -1,20 +1,71 @@
 package model;
 
-import java.util.Arrays;
+import java.util.Objects;
 
 public class Game {
-    int[][] board;
+    String playerId ;
+    int score;
+    int numOfSouls;
+    String date;
+    String durationOfGame;
 
-    public Game(int[][] board) {
-        this.board = board;
+    public String getPlayerId() {
+        return playerId;
     }
 
-    public int[][] getBoard() {
-        return board;
+    public void setPlayerId(String playerId) {
+        this.playerId = playerId;
     }
 
-    public void setBoard(int[][] board) {
-        this.board = board;
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getNumOfSouls() {
+        return numOfSouls;
+    }
+
+    public void setNumOfSouls(int numOfSouls) {
+        this.numOfSouls = numOfSouls;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getDurationOfGame() {
+        return durationOfGame;
+    }
+
+    public void setDurationOfGame(String durationOfGame) {
+        this.durationOfGame = durationOfGame;
+    }
+
+    public Game(String playerId, int score, int numOfSouls, String date, String durationOfGame) {
+        this.playerId = playerId;
+        this.score = score;
+        this.numOfSouls = numOfSouls;
+        this.date = date;
+        this.durationOfGame = durationOfGame;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "playerId='" + playerId + '\'' +
+                ", score=" + score +
+                ", numOfSouls=" + numOfSouls +
+                ", date='" + date + '\'' +
+                ", durationOfGame='" + durationOfGame + '\'' +
+                '}';
     }
 
     @Override
@@ -22,18 +73,15 @@ public class Game {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return Arrays.equals(board, game.board);
+        return score == game.score &&
+                numOfSouls == game.numOfSouls &&
+                Objects.equals(playerId, game.playerId) &&
+                Objects.equals(date, game.date) &&
+                Objects.equals(durationOfGame, game.durationOfGame);
     }
 
     @Override
     public int hashCode() {
-        return Arrays.hashCode(board);
-    }
-
-    @Override
-    public String toString() {
-        return "Game{" +
-                "board=" + Arrays.toString(board) +
-                '}';
+        return Objects.hash(playerId, score, numOfSouls, date, durationOfGame);
     }
 }
