@@ -129,8 +129,35 @@ public class SysData {
 
         } catch (IOException e) {
             e.printStackTrace();
-    }
-    }
+    } }
+
+    public ArrayList<Question> ReadHistoryJson() {
+        JSONParser jsonParser = new JSONParser();
+        ArrayList<Question> result= new ArrayList<>();
+        try (FileReader reader = new FileReader("json/history.json")) {
+            //Read JSON file
+            Object obj = jsonParser.parse(reader);
+            JSONObject obj2=(JSONObject) obj;
+            JSONArray arr = (JSONArray) obj2.get("history");
+            Iterator<Object> iterator = arr.iterator();
+            while (iterator.hasNext()) {
+                JSONObject object = (JSONObject) iterator.next();
+           //     result.add( new Question((String)object.get("playerId"),,(int)object.get("score") ,(String)object.get("level") ,(String)object.get("team") ));
+            }
+            return result;
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            return null;
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }}
+
+
 
    /* public void InsertToJson(Question Q){
         JSONParser jsonParser = new JSONParser();
