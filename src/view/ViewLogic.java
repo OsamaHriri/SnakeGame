@@ -8,10 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Screen;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
+import javafx.stage.*;
 
 /**
  * Class U_ViewLogic ~ manages the windows in the system
@@ -23,7 +20,7 @@ public class ViewLogic {
 
 	// protected static SysData sysData;
 	protected static String currentUserID;
-
+    public static Stage stage;
 	protected static Login sampleController;
 	protected static MainScreen sampleController2;
 	/*
@@ -113,7 +110,7 @@ public class ViewLogic {
 	 * Open Login Window
 	 */
 	protected static void newUserWindow() {
-		Stage stage = new Stage();
+		stage = new Stage();
 		stage.setMaximized(true);
 		stage.initStyle(StageStyle.UNDECORATED);
 		newWindow(ViewLogic.class.getResource("MainScreen.fxml"), stage, null, null, null, null, null, null, false,
@@ -121,7 +118,7 @@ public class ViewLogic {
 	}
 
 	protected static void newAdminWindow() {
-		Stage stage = new Stage();
+		stage = new Stage();
 		stage.setMaximized(true);
 		stage.initStyle(StageStyle.UNDECORATED);
 		newWindow(ViewLogic.class.getResource("MainScreen.fxml"), stage, null, null, null, null, null, null, false,
@@ -139,7 +136,7 @@ public class ViewLogic {
 	}
 
 	protected static void newSignUpWindow() {
-		Stage stage = new Stage();
+		stage = new Stage();
 
 		newWindow(ViewLogic.class.getResource("signUp.fxml"), stage, null, null, null, null, null, null, false,
 				"sign Up", false);
