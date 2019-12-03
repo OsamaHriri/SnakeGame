@@ -24,6 +24,7 @@ public class SysData {
     private ArrayList<Game> history;
     private ArrayList<Question> questions;
 
+
     public static SysData getInstance() {
         if (single_instance == null){
             single_instance = new SysData();
