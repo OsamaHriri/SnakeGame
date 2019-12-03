@@ -1,6 +1,7 @@
 package model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,7 +10,7 @@ import java.util.Map;
 public class Question implements Serializable {
 
     private String question;
-    private List<String> answers = null;
+    private ArrayList<String> answers = null;
     private String correctAns;
     private String level;
     private String team;
@@ -29,7 +30,7 @@ public class Question implements Serializable {
      * @param team
      * @param correctAns
      */
-    public Question(String question, List<String> answers, String correctAns, String level, String team) {
+    public Question(String question, ArrayList<String> answers, String correctAns, String level, String team) {
         super();
         this.question = question;
         this.answers = answers;
@@ -55,11 +56,11 @@ public class Question implements Serializable {
         return answers;
     }
 
-    public void setAnswers(List<String> answers) {
+    public void setAnswers(ArrayList<String> answers) {
         this.answers = answers;
     }
 
-    public Question withAnswers(List<String> answers) {
+    public Question withAnswers(ArrayList<String> answers) {
         this.answers = answers;
         return this;
     }
@@ -103,6 +104,9 @@ public class Question implements Serializable {
         return this;
     }
 
-
-
+    @Override
+    public String toString() {
+        return "question "+this.question+" answers:"+this.answers+" CorrectAns: "+this.correctAns+" level:"
+                +this.level+" team:"+this.team;
+    }
 }
