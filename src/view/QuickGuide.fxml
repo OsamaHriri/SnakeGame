@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<ScrollPane fx:id="scrollPane" prefHeight="2000.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.Game">
+   <content>
+      <AnchorPane prefHeight="1995.0" prefWidth="1267.0" style="-fx-background-color: black;">
+         <children>
+            <VBox prefHeight="2000.0" prefWidth="1265.0">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="1080.0" prefWidth="960.0">
+                     <children>
+                        <VBox prefHeight="1080.0" prefWidth="600.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="123.0" prefWidth="600.0">
+                                 <children>
+                                    <Label contentDisplay="CENTER" prefHeight="81.0" prefWidth="363.0" text="Key Bindings" textAlignment="CENTER" textFill="WHITE">
+                                       <font>
+                                          <Font name="System Bold" size="59.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </VBox>
+                              <HBox prefHeight="894.0" prefWidth="676.0">
+                                 <VBox.margin>
+                                    <Insets top="20.0" />
+                                 </VBox.margin>
+                                 <children>
+                                    <VBox prefHeight="894.0" prefWidth="300.0">
+                                       <children>
+                                          <Label text="Move Up" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Move Down" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Move Left" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Move Right" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Pause" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <Label text="Menu" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="30.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_RIGHT" prefHeight="894.0" prefWidth="300.0">
+                                       <children>
+                                          <Label prefHeight="88.0" prefWidth="49.0" text="↑" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="30.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="↓" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="30.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="←" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="30.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="→" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="30.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="P" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="30.0" />
+                                             </padding>
+                                          </Label>
+                                          <Label text="ECS" textFill="WHITE">
+                                             <font>
+                                                <Font size="50.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets bottom="30.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <HBox.margin>
+                              <Insets top="100.0" />
+                           </HBox.margin>
+                        </VBox>
+                     </children>
+                  </HBox>
+                  <HBox prefHeight="1161.0" prefWidth="1265.0">
+                     <children>
+                        <ScrollPane prefHeight="1041.0" prefWidth="1301.0">
+                           <content>
+                              <VBox alignment="TOP_CENTER" prefHeight="2000.0" prefWidth="1253.0" style="-fx-background-color: white;">
+                                 <children>
+                                    <Label contentDisplay="CENTER" text="How To Play" textAlignment="CENTER">
+                                       <VBox.margin>
+                                          <Insets top="100.0" />
+                                       </VBox.margin>
+                                       <font>
+                                          <Font name="System Bold" size="59.0" />
+                                       </font>
+                                    </Label>
+                                    <VBox alignment="CENTER" prefHeight="486.0" prefWidth="960.0">
+                                       <children>
+                                          <Label text="This is the snake">
+                                             <font>
+                                                <Font name="Calibri Light" size="43.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <ImageView fitHeight="356.0" fitWidth="399.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../images/annonation.png" />
+                                             </image>
+                                          </ImageView>
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="626.0" prefWidth="960.0">
+                                       <children>
+                                          <Label text="These are the Objectives">
+                                             <font>
+                                                <Font name="Calibri Light" size="43.0" />
+                                             </font>
+                                             <VBox.margin>
+                                                <Insets bottom="20.0" top="20.0" />
+                                             </VBox.margin>
+                                          </Label>
+                                          <HBox prefHeight="512.0" prefWidth="960.0">
+                                             <children>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0">
+                                                   <children>
+                                                      <ImageView fitHeight="200.0" fitWidth="256.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/Fruits_-_Filled_outline-10-512.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fitHeight="196.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </children>
+                                                </VBox>
+                                                <VBox alignment="CENTER" prefHeight="200.0" prefWidth="480.0">
+                                                   <children>
+                                                      <ImageView fitHeight="220.0" fitWidth="282.0" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../images/fruit-apple-food-vegetarian-diet-healthy-food-vegan-organic-512.png" />
+                                                         </image>
+                                                      </ImageView>
+                                                      <ImageView fitHeight="210.0" fitWidth="278.0" pickOnBounds="true" preserveRatio="true" />
+                                                   </children>
+                                                </VBox>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
+                                    <VBox prefHeight="200.0" prefWidth="100.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </content>
+</ScrollPane>
