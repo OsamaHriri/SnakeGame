@@ -26,7 +26,7 @@ public class SysData {
     private ArrayList<Player> players;
     private ArrayList<Game> history=new ArrayList<>();
     private ArrayList<Question> questions;
-
+    public static  Game game;
 
     public static SysData getInstance() {
         if (single_instance == null){
