@@ -1,5 +1,6 @@
 package view;
 
+import control.SysData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,6 +16,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
+    System.out.println(SysData.getInstance().getHistory());
         window = primaryStage;
         Parent root;
         try {

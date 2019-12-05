@@ -2,6 +2,9 @@ package model;
 
 import java.util.Objects;
 
+/**
+ *  Game class is made for game History
+ */
 public class Game {
     String playerId ;
     int score;
