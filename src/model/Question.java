@@ -1,5 +1,7 @@
 package model;
 
+import control.SysData;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -7,14 +9,13 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Question implements Serializable {
+public class Question implements Serializable, BoardObject {
 
     private String question;
     private ArrayList<String> answers = null;
     private String correctAns;
     private String level;
     private String team;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
     private final static long serialVersionUID = 2895261579048435587L;
 
     /**
@@ -106,7 +107,42 @@ public class Question implements Serializable {
 
     @Override
     public String toString() {
-        return "question "+this.question+" answers:"+this.answers+" CorrectAns: "+this.correctAns+" level:"
-                +this.level+" team:"+this.team;
+        return "question " + this.question + " answers:" + this.answers + " CorrectAns: " + this.correctAns + " level:"
+                + this.level + " team:" + this.team;
+    }
+
+    @Override
+    public void addPoints() {
+        switch (level) {
+            case "1":
+                SysData.game.addToSnakeLength(Consts.CorrectEasyQuestionPoints);
+            case "2":
+                SysData.game.addToSnakeLength(Consts.CorrectMediumQuestionPoints);
+            case "3":
+                SysData.game.addToSnakeLength(Consts.CorrectHardQuestionPoints);
+        }
+    }
+
+    @Override
+    public void removePoints() {
+        switch (level) {
+            case "1":
+                SysData.game.addToSnakeLength(Consts.WrongEasyQuestionPoints);
+            case "2":
+                SysData.game.addToSnakeLength(Consts.WrongMediumQuestionPoints);
+            case "3":
+                SysData.game.addToSnakeLength(Consts.WrongHardQuestionPoints);
+        }
+    }
+
+
+    @Override
+    public void addLength() {
+
+    }
+
+    @Override
+    public void addSouls() {
+
     }
 }

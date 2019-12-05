@@ -178,6 +178,8 @@ public class MainGameView
         }
     //System.out.print("snake printed");
         // loading fruits to canvas
+
+        System.out.println("fruit size" + fruits.size());
         for(int i = 0; i < fruits.size(); ++i) {
             helpX = fruits.get(i).getX();
             helpY = fruits.get(i).getY();
@@ -462,7 +464,7 @@ public class MainGameView
 
 
 
-                Controller.getInstance().update(); // updating the game parameters, positions, etc.
+               update(); // updating the game parameters, positions, etc.
                 render(); // rendering the scene
                // movementHandler(); // handling user key input on actual scene
             }
@@ -470,5 +472,23 @@ public class MainGameView
 
     }
 
+    public void update() {
 
+        board.updateFruit(); // updates the state of fruits
+        board.checkEaten(); // check if a fruit has been eaten
+
+        if(board.checkCollision() == GameState.Finished) { // check if a collision occurred
+            state = GameState.Finished; //
+        }
+        //setSound(); // updating the sound
+
+        // setting snake speed due to gathered points
+        /*
+        if(speedConstraint > 2 && board.getScore() >= speedPointsConstraint)
+            speedConstraint = 2; 		   //snake will move faster
+        if((speedConstraint == 2) && (board.getScore() - speedPointsConstraint) >= 10) {
+            speedPointsConstraint += 30;  // next interval 30 points further
+            speedConstraint = 3; 	   	  // back to original speed
+        }*/
+    }
 }

@@ -2,12 +2,16 @@ package model;
 
 import java.util.Objects;
 
+/**
+ *  Game class is made for game History
+ */
 public class Game {
-    String playerId ;
+    String playerId;
     int score;
     int numOfSouls;
     String date;
     String durationOfGame;
+    Snake snake;
 
     public String getPlayerId() {
         return playerId;
@@ -55,6 +59,19 @@ public class Game {
         this.numOfSouls = numOfSouls;
         this.date = date;
         this.durationOfGame = durationOfGame;
+        this.snake = new Snake();
+    }
+
+    public void addToScore(int points) {
+        this.score += points;
+    }
+
+    public void addToSouls(int souls) {
+        this.numOfSouls += souls;
+    }
+
+    public void addToSnakeLength(int length) {
+        this.snake.addLengthToSnake(length);
     }
 
     @Override

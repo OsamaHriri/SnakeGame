@@ -173,7 +173,7 @@
                                           </Label>
                                           <ImageView fitHeight="356.0" fitWidth="399.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
-                                                <Image url="@../images/Annotation%202019-11-19%20173353.png" />
+                                                <Image url="@../images/annonation.png" />
                                              </image>
                                           </ImageView>
                                        </children>

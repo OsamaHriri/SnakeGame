@@ -1,6 +1,6 @@
 package model;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class Player {
 	private String personID;
@@ -10,10 +10,10 @@ public class Player {
 	private String phone;
 	private String email;
 	private String password;
-	private int maxPoints;
+	private int maxPoints=0;
 
-	public Player(String personID, String firstName, String surName, Date dateOfBirth, String phone, String email,
-				  String password) {
+    public Player (String personID, String firstName, String surName, Date dateOfBirth, String phone, String email,
+				   String password){
 		super();
 		this.personID = personID;
 		this.firstName = firstName;
@@ -22,6 +22,18 @@ public class Player {
 		this.phone = phone;
 		this.email = email;
 		this.password = password;
+	}
+	public Player(String personID, String firstName, String surName, Date dateOfBirth, String phone, String email,
+				  String password,int maxPoints) {
+		super();
+		this.personID = personID;
+		this.firstName = firstName;
+		this.surName = surName;
+		this.dateOfBirth = dateOfBirth;
+		this.phone = phone;
+		this.email = email;
+		this.password = password;
+		this.maxPoints=maxPoints;
 	}
 
 
@@ -68,6 +80,13 @@ public class Player {
 		this.password = password;
 	}
 
+	public int getMaxPoints() {
+		return maxPoints;
+	}
+
+	public void setMaxPoints(int maxPoints) {
+		this.maxPoints = maxPoints;
+	}
 
 	@Override
 	public int hashCode() {
