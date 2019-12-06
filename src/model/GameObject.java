@@ -4,12 +4,13 @@ public abstract class GameObject {
 
 	public static final int SIZE = 20;
 	protected int X, Y;
-	
+
 	public GameObject(int x, int y){
 		
 		this.X = x;
 		this.Y = y;
 	}
+
 
 	public int getX() {
 		return X;

@@ -90,4 +90,9 @@ public class Snake {
         body.add(new BodyPart(x,y));
         ++size;
     }
+
+
+    public void addLengthToSnake(int length){
+        this.size+=length;
+    }
 }
