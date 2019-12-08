@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<ScrollPane fx:id="scrollPane" prefHeight="2000.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.QManagement">
+<ScrollPane fx:id="scrollPane" prefHeight="2000.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.QManagement">
     <content>
-        <VBox fx:id="vbox" alignment="TOP_CENTER" fillWidth="false" prefHeight="2005.0" prefWidth="1280.0" spacing="30.0" style="-fx-background-color: bloack;">
+        <VBox fx:id="vbox" alignment="TOP_CENTER" fillWidth="false" prefHeight="2005.0" prefWidth="1280.0" spacing="30.0" style="-fx-background-color: block;">
             <children>
                 <HBox alignment="CENTER" prefHeight="200.0" prefWidth="900.0" spacing="30.0">
                     <children>
@@ -110,7 +110,7 @@
                                     <Font size="18.0" />
                                  </font></TextField>
                               <ComboBox fx:id="CoInsertCorrectAnswer" prefHeight="50.0" prefWidth="200.0" promptText="CorrectAnswer" style="-fx-background-radius: 50;" />
-                              <Button fx:id="btnInsert" mnemonicParsing="false" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Insert" textFill="WHITE">
+                              <Button fx:id="btnInsert" mnemonicParsing="false" onAction="#InsertQ" onMouseClicked="#InsertQ" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Insert" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
                                  </font></Button>
@@ -128,34 +128,35 @@
                      <center>
                         <VBox alignment="CENTER" prefHeight="151.0" prefWidth="208.0" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ComboBox fx:id="ComboChooseQuestion" onAction="#UpdateQ" onDragDetected="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="Choose Question" style="-fx-background-radius: 50;" />
-                              <TextField fx:id="UpdateQuestionBody" alignment="CENTER" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="Question Body" style="-fx-background-radius: 50;">
+                              <ComboBox fx:id="ComboChooseQuestion" onAction="#populateFields" prefHeight="50.0" prefWidth="200.0" promptText="Choose Question" style="-fx-background-radius: 50;" />
+                              <TextField fx:id="UpdateQuestionBody" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Question Body" style="-fx-background-radius: 50;">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <ComboBox fx:id="ComboUpdateTeam" onAction="#UpdateQ" onDragDetected="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="team" style="-fx-background-radius: 50;" />
-                              <ComboBox fx:id="ComboUpdateLevel" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="level" style="-fx-background-radius: 50;" />
-                              <TextField fx:id="UpdateAnswer1" alignment="CENTER" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="Answer 1" style="-fx-background-radius: 50;">
+                              <ComboBox fx:id="ComboUpdateTeam" prefHeight="50.0" prefWidth="200.0" promptText="team" style="-fx-background-radius: 50;" />
+                              <ComboBox fx:id="ComboUpdateLevel" prefHeight="50.0" prefWidth="200.0" promptText="level" style="-fx-background-radius: 50;" />
+                              <TextField fx:id="UpdateAnswer1" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 1" style="-fx-background-radius: 50;">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="UpdateAnswer2" alignment="CENTER" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="Answer 2" style="-fx-background-radius: 50;">
+                              <TextField fx:id="UpdateAnswer2" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 2" style="-fx-background-radius: 50;">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="UpdateAnswer3" alignment="CENTER" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="Answer 3" style="-fx-background-radius: 50;">
+                              <TextField fx:id="UpdateAnswer3" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 3" style="-fx-background-radius: 50;">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <TextField fx:id="UpdateAnswer4" alignment="CENTER" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="Answer 4" style="-fx-background-radius: 50;">
+                              <TextField fx:id="UpdateAnswer4" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 4" style="-fx-background-radius: 50;">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
-                              <ComboBox fx:id="ComboUpdateCorrectAns" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" promptText="CorrectAnswer" style="-fx-background-radius: 50;" />
-                              <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#UpdateQ" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Update" textFill="WHITE">
+                              <ComboBox fx:id="ComboUpdateCorrectAns" prefHeight="50.0" prefWidth="200.0" promptText="CorrectAnswer" style="-fx-background-radius: 50;" />
+                              <Button fx:id="btnUpdate" mnemonicParsing="false" onAction="#UpdateQ" onMouseClicked="#UpdateQ" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Update" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
-                                 </font></Button>
+                                 </font>
+                              </Button>
                            </children>
                            <BorderPane.margin>
                               <Insets />
@@ -173,13 +174,13 @@
                      <center>
                         <VBox alignment="TOP_CENTER" spacing="20.0" BorderPane.alignment="CENTER">
                            <children>
-                              <ComboBox fx:id="ComboDelete" onAction="#DeleteQuestion" prefHeight="50.0" prefWidth="200.0" promptText="Question Body" style="-fx-background-radius: 50;">
+                              <ComboBox fx:id="ComboDelete" prefHeight="50.0" prefWidth="200.0" promptText="Question Body" style="-fx-background-radius: 50;">
                                  <VBox.margin>
                                     <Insets top="80.0" />
                                  </VBox.margin>
                               </ComboBox>
-                              <TextArea fx:id="dlt_question_body" prefHeight="200.0" prefWidth="200.0" />
-                              <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#DeleteQuestion" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Delete" textFill="WHITE">
+                              <TextArea fx:id="QuestionBody" prefHeight="200.0" prefWidth="200.0" />
+                              <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#DeleteQ" prefHeight="50.0" prefWidth="200.0" style="-fx-background-radius: 50; -fx-background-color: green;" text="Delete" textFill="WHITE">
                                  <font>
                                     <Font size="25.0" />
                                  </font></Button>
@@ -189,7 +190,8 @@
                            </BorderPane.margin>
                            <padding>
                               <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
-                           </padding></VBox>
+                           </padding>
+                        </VBox>
                      </center>
                      <HBox.margin>
                         <Insets top="40.0" />

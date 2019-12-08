@@ -64,18 +64,19 @@ public class SysData {
         return players;
     }
 
-    public Question ifExists(String ID) {
+    public boolean  ifExists(String ID) {
         Question temp = null;
         for (Question d : questions) {
             if (d.getQuestion().equals(ID))
                 temp = d;
+            if(temp!=null) return true;
         }
-        return temp;
+        return false ;
     }
 
     public boolean deleteQuestion(String ID) {
-        Question temp = ifExists(ID);
-        if (temp == null) return false;
+        boolean temp = ifExists(ID);
+        if (!temp) return false;
         else {
             questions.remove(temp);
             return true;
@@ -83,16 +84,24 @@ public class SysData {
     }
 
     public boolean insertQuestion(Question Q) {
-        Question temp = ifExists(Q.getQuestion());
-        if (temp != null) return false;
-        else return questions.add(Q);
+        boolean temp = ifExists(Q.getQuestion());
+        if (temp)
+            return false;
+        else return (questions.add(Q));
     }
 
     public boolean updateQuestion(String question, String Updated, ArrayList<String> answer, String correctAns, String level, String team) {
-        if (ifExists(Updated) != null && !question.equals(Updated)) return false;
-        Question temp = ifExists(question);
-        if (deleteQuestion(question) != true) return false;
-        return questions.add(new Question(Updated, answer, correctAns, QuestionLevel.valueOf(level), team));
+            System.out.print("ppp");
+        if (ifExists(Updated) != false && question.equals(Updated)) return false;
+        System.out.print("ooo");
+        boolean temp = ifExists(question);
+        if(temp) {
+            if (deleteQuestion(question) != true) return false;
+            System.out.print("zzzzqqq");
+            questions.add(new Question(Updated, answer, correctAns, QuestionLevel.valueOf(level), team));
+            return true;
+        }else
+            return false;
     }
 
     public ArrayList<Question> readQuestionFromJson() {
