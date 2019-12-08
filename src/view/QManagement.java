@@ -4,20 +4,20 @@ import control.SysData;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 import model.Player;
 import model.Question;
+import model.QuestionLevel;
 
 import javax.swing.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class QManagement implements Initializable {
 
@@ -32,7 +32,7 @@ public class QManagement implements Initializable {
     @FXML
     ComboBox<String> ComboChooseQuestion;
     @FXML
-    ComboBox<String>  ComboUpdateTeam;
+    ComboBox<String> ComboUpdateTeam;
     @FXML
     ComboBox<String> ComboUpdateLevel;
     @FXML
@@ -47,8 +47,8 @@ public class QManagement implements Initializable {
     TextField UpdateAnswer4;
     @FXML
     ComboBox<Integer> ComboUpdateCorrectAns;
-
-
+    @FXML
+    TextArea dlt_question_body;
     @FXML
     Button btnInsert;
     @FXML
@@ -98,24 +98,19 @@ public class QManagement implements Initializable {
             ComboChooseQuestion.getItems().add(s);
         }
 
-        ArrayList<Player> players=SysData.getInstance().getPlayers();
-        for(Player player:players)
-        {
-            String PlayerName=player.getFirstName();
-            ComboUpdateTeam.getItems().add(PlayerName);
-            CoInsertteams.getItems().add(PlayerName);
-        }
+        String[] teams = {"Chimp", "Crocodile", "Scorpion", "Giraffe", "Spider", "Viper", "Panther", "Wolf", "Sloth", "Lion", "Panda", "Piranha", "Rabbit", "Shark", "Hawk", "Husky"};
+        ComboUpdateTeam.getItems().addAll(teams);
+        CoInsertteams.getItems().addAll(teams);
 
-
-        ArrayList<String> levels=new ArrayList<>();
-        levels.add("Easy");
-        levels.add("Moderate");
-        levels.add("Hard");
+        ArrayList<String> levels = new ArrayList<>();
+        QuestionLevel[] values = QuestionLevel.values();
+        for (QuestionLevel ql : values)
+            levels.add(ql.toString());
         ComboUpdateLevel.getItems().addAll(levels);
         CoInsertlevel.getItems().addAll(levels);
 
 
-        ArrayList<Integer> CoreectAns=new ArrayList<>();
+        ArrayList<Integer> CoreectAns = new ArrayList<>();
         CoreectAns.add(1);
         CoreectAns.add(2);
         CoreectAns.add(3);
@@ -124,38 +119,38 @@ public class QManagement implements Initializable {
         CoInsertCorrectAnswer.getItems().addAll(CoreectAns);
         ComboUpdateCorrectAns.getItems().addAll(CoreectAns);
 
-
+        ComboDelete.getSelectionModel().selectedItemProperty().addListener((options, oldValue, newValue) -> {
+                    dlt_question_body.setText(SysData.getInstance().getQuestion(newValue).toString());
+                }
+        );
     }
-
-
-
 
 
     @FXML
     public void UpdateQ(ActionEvent event) {
-        if(event.getSource().equals(btnUpdate)) {
+        if (event.getSource().equals(btnUpdate)) {
             System.out.println("x");
             String UpDateThisValue = ComboChooseQuestion.getValue();
             if (UpDateThisValue != null) {
                 Question UpdateThisQ = SysData.getInstance().ifExists(UpDateThisValue);
-                if(UpdateThisQ!=null){
-                    ArrayList<String> UpdatedAnswers=new ArrayList<>();
-                    String GetTeamValue=ComboUpdateTeam.getValue();
-                    String GetLevelValue=ComboUpdateLevel.getValue();
+                if (UpdateThisQ != null) {
+                    ArrayList<String> UpdatedAnswers = new ArrayList<>();
+                    String GetTeamValue = ComboUpdateTeam.getValue();
+                    String GetLevelValue = ComboUpdateLevel.getValue();
                     String UpdateBody = UpdateQuestionBody.getText();
                     String UpdateA1 = UpdateAnswer1.getText();
                     String UpdateA2 = UpdateAnswer2.getText();
                     String UpdateA3 = UpdateAnswer3.getText();
                     String UpdateA4 = UpdateAnswer4.getText();
-                    int CorrectAns=ComboUpdateCorrectAns.getValue() ;
+                    int CorrectAns = ComboUpdateCorrectAns.getValue();
 
-                    if(UpdateBody!=null && UpdateA1!=null && UpdateA2!=null && UpdateA3!=null && UpdateA4!=null && GetTeamValue!=null && GetLevelValue!=null && CorrectAns!=0)
+                    if (UpdateBody != null && UpdateA1 != null && UpdateA2 != null && UpdateA3 != null && UpdateA4 != null && GetTeamValue != null && GetLevelValue != null && CorrectAns != 0)
                         UpdatedAnswers.add(UpdateA1);
-                        UpdatedAnswers.add(UpdateA2);
-                        UpdatedAnswers.add(UpdateA3);
-                        UpdatedAnswers.add(UpdateA4);
-                        String CorrectAnswer=UpdatedAnswers.get(CorrectAns);
-                        SysData.getInstance().updateQuestion(UpDateThisValue,UpdateBody,UpdatedAnswers,CorrectAnswer,GetLevelValue,GetTeamValue);
+                    UpdatedAnswers.add(UpdateA2);
+                    UpdatedAnswers.add(UpdateA3);
+                    UpdatedAnswers.add(UpdateA4);
+                    String CorrectAnswer = UpdatedAnswers.get(CorrectAns);
+                    SysData.getInstance().updateQuestion(UpDateThisValue, UpdateBody, UpdatedAnswers, CorrectAnswer, GetLevelValue, GetTeamValue);
 
                 }
 
@@ -164,9 +159,6 @@ public class QManagement implements Initializable {
         }
 
     }
-
-
-
 
 
     @FXML
@@ -181,7 +173,7 @@ public class QManagement implements Initializable {
                 if (Q != null) {
                     SysData.getInstance().deleteQuestion(OnDeleteQ);
 
-                //    SysData.getInstance().DeleteFromJson(OnDeleteQ);
+                    //    SysData.getInstance().DeleteFromJson(OnDeleteQ);
                     ComboDelete.notifyAll();
                     for (Question q : SysData.getInstance().getQuestions()) {
                         String s = q.getQuestion();
@@ -201,37 +193,47 @@ public class QManagement implements Initializable {
 
     @FXML
     public void InsertQ(ActionEvent event) {
-        if(event.getSource().equals(btnInsert))
-        {
-            String InsertThisQuestion=InsertQuestionBody.getText();
-            if(InsertThisQuestion!=null)
-            {
-                String T=CoInsertteams.getValue();
-                String L=CoInsertlevel.getValue();
-                String An1=InsertAnswer1.getText();
-                String An2=InsertAnswer2.getText();
-                String An3=InsertAnswer3.getText();
-                String An4=InsertAnswer4.getText();
-                int CorrectAnsNum=CoInsertCorrectAnswer.getValue();
+        if (event.getSource().equals(btnInsert)) {
+            String InsertThisQuestion = InsertQuestionBody.getText();
+            if (InsertThisQuestion != null && !InsertThisQuestion.equals("")) {
+                String T = CoInsertteams.getValue();
+                String L = CoInsertlevel.getValue();
+                String An1 = InsertAnswer1.getText();
+                String An2 = InsertAnswer2.getText();
+                String An3 = InsertAnswer3.getText();
+                String An4 = InsertAnswer4.getText();
+                String CorrectAnsNum = CoInsertCorrectAnswer.getValue().toString();
 
 
-                if(T!=null && L!=null && An1!=null && An2!=null && An3!=null && An4!=null && CorrectAnsNum!=0)
-                {
-                    ArrayList<String> newAnsInsert=new ArrayList<>();  //answers array
+                if (T != null && L != null && An1 != null && An2 != null && An3 != null && An4 != null && CorrectAnsNum != "") {
+                    ArrayList<String> newAnsInsert = new ArrayList<>();  //answers array
                     newAnsInsert.add(An1);
                     newAnsInsert.add(An2);
                     newAnsInsert.add(An3);
                     newAnsInsert.add(An4);
-                    String CorrectAns=newAnsInsert.get(CorrectAnsNum);
-                //    Question InserQuestion=new Question(InsertThisQuestion,newAnsInsert,CorrectAns,L,T);
-               //     SysData.getInstance().insertQuestion(InserQuestion);
+
+                    QuestionLevel level = null;
+                    switch (L) {
+                        case "1":
+                            level = QuestionLevel.ONE;
+                        case "2":
+                            level = QuestionLevel.TWO;
+                        case "3":
+                            level = QuestionLevel.THREE;
+                    }
+
+
+                    Question InserQuestion = new Question(InsertThisQuestion, newAnsInsert, CorrectAnsNum, level, T);
+                    SysData.getInstance().insertQuestion(InserQuestion);
+                    System.out.println(SysData.getInstance().getQuestions());
                 }
 
             }
         }
     }
 
-    }
+
+}
 
 
 

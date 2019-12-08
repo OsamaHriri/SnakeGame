@@ -24,7 +24,7 @@ import java.util.Locale;
 public class SysData {
 
     private static SysData single_instance = null;
-    private ArrayList<Player> players;
+    private ArrayList<Player> players= new ArrayList<>();
     private ArrayList<Game> history = new ArrayList<>();
     private ArrayList<Question> questions;
     public static Game game;
@@ -107,7 +107,16 @@ public class SysData {
             while (iterator.hasNext()) {
                 JSONObject object = (JSONObject) iterator.next();
                 ArrayList<String> answers = (JSONArray) object.get("answers");
-                result.add(new Question((String) object.get("question"), answers, (String) object.get("correct_ans"), QuestionLevel.valueOf((String) object.get("level")), (String) object.get("team")));
+                QuestionLevel level = null;
+                switch ((String) object.get("level")) {
+                    case "1":
+                        level = QuestionLevel.ONE;
+                    case "2":
+                        level = QuestionLevel.TWO;
+                    case "3":
+                        level = QuestionLevel.THREE;
+                }
+                result.add(new Question((String) object.get("question"), answers, (String) object.get("correct_ans"), level, (String) object.get("team")));
             }
             return result;
 
@@ -335,7 +344,15 @@ public class SysData {
     public Player getPlayerByID(String id) {
         for (Player p : players
         ) {
-            if (p.getPersonID().equals(id))
+            if (p != null && p.getPersonID().equals(id))
+                return p;
+
+        }
+        return null;
+    }    public Question getQuestion(String id) {
+        for (Question p : questions
+        ) {
+            if (p != null && p.getQuestion().equals(id))
                 return p;
 
         }
