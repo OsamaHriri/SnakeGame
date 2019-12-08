@@ -254,7 +254,7 @@ public class SysData {
 
 
 
-   /* public void InsertToJson(Question Q){
+   public void InsertToJson(Question Q){
         JSONParser jsonParser = new JSONParser();
 
         try {
@@ -318,16 +318,16 @@ public class SysData {
         }}
 
 
-        public void UpdateToJson(String Question,ArrayList<String> answers,String corrent_ans,String level , String Team){
-         Question temp=null;
-         for(Question Q : questions){
-             if(Q.getQuestion().equals(Question)){
-                 temp=Q;
-             } }
-          Q.S
+        //public void UpdateToJson(String Question,ArrayList<String> answers,String corrent_ans,String level , String Team){
+         //Question temp=null;
+         //for(Question Q : questions){
+         //    if(Q.getQuestion().equals(Question)){
+              //   temp=Q;
+           //  } }
 
 
-        }*/
+
+        }
 
 
-    }
+
