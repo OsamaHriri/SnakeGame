@@ -181,7 +181,7 @@ public class QManagement implements Initializable {
                 if (Q != null) {
                     SysData.getInstance().deleteQuestion(OnDeleteQ);
 
-                    SysData.getInstance().DeleteFromJson(OnDeleteQ);
+                //    SysData.getInstance().DeleteFromJson(OnDeleteQ);
                     ComboDelete.notifyAll();
                     for (Question q : SysData.getInstance().getQuestions()) {
                         String s = q.getQuestion();
@@ -223,8 +223,8 @@ public class QManagement implements Initializable {
                     newAnsInsert.add(An3);
                     newAnsInsert.add(An4);
                     String CorrectAns=newAnsInsert.get(CorrectAnsNum);
-                    Question InserQuestion=new Question(InsertThisQuestion,newAnsInsert,CorrectAns,L,T);
-                    SysData.getInstance().insertQuestion(InserQuestion);
+                //    Question InserQuestion=new Question(InsertThisQuestion,newAnsInsert,CorrectAns,L,T);
+               //     SysData.getInstance().insertQuestion(InserQuestion);
                 }
 
             }
