@@ -3,6 +3,7 @@ package control;
 import model.Game;
 import model.Player;
 import model.Question;
+import model.QuestionLevel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -24,12 +25,12 @@ public class SysData {
 
     private static SysData single_instance = null;
     private ArrayList<Player> players;
-    private ArrayList<Game> history=new ArrayList<>();
+    private ArrayList<Game> history = new ArrayList<>();
     private ArrayList<Question> questions;
-    public static  Game game;
+    public static Game game;
 
     public static SysData getInstance() {
-        if (single_instance == null){
+        if (single_instance == null) {
             single_instance = new SysData();
             single_instance.setQuestions();
             single_instance.setHistory();
@@ -48,7 +49,7 @@ public class SysData {
     }
 
     public void setHistory() {
-        this.history =readHistoryFromJson();
+        this.history = readHistoryFromJson();
     }
 
     public ArrayList<Game> getHistory() {
@@ -63,48 +64,50 @@ public class SysData {
         return players;
     }
 
-    public Question ifExists(String ID){
-        Question temp=null;
-        for(Question d:questions){
-            if(d.getQuestion().equals(ID))
-                temp=d;
+    public Question ifExists(String ID) {
+        Question temp = null;
+        for (Question d : questions) {
+            if (d.getQuestion().equals(ID))
+                temp = d;
         }
         return temp;
     }
 
-    public boolean deleteQuestion(String ID){
-        Question temp= ifExists(ID);
-        if(temp==null) return false;
+    public boolean deleteQuestion(String ID) {
+        Question temp = ifExists(ID);
+        if (temp == null) return false;
         else {
             questions.remove(temp);
             return true;
         }
     }
-    public boolean insertQuestion(Question Q){
-        Question temp= ifExists(Q.getQuestion());
-        if(temp!=null) return false;
+
+    public boolean insertQuestion(Question Q) {
+        Question temp = ifExists(Q.getQuestion());
+        if (temp != null) return false;
         else return questions.add(Q);
     }
-    public boolean updateQuestion(String question , String Updated ,ArrayList<String> answer,String correctAns, String level, String team){
-        if(ifExists(Updated)!=null && !question.equals(Updated)) return false;
-        Question temp=ifExists(question);
-      if( deleteQuestion(question)!=true) return false;
-        return questions.add(new Question(Updated , answer,correctAns, level,  team));
+
+    public boolean updateQuestion(String question, String Updated, ArrayList<String> answer, String correctAns, String level, String team) {
+        if (ifExists(Updated) != null && !question.equals(Updated)) return false;
+        Question temp = ifExists(question);
+        if (deleteQuestion(question) != true) return false;
+        return questions.add(new Question(Updated, answer, correctAns, QuestionLevel.valueOf(level), team));
     }
 
     public ArrayList<Question> readQuestionFromJson() {
         JSONParser jsonParser = new JSONParser();
-        ArrayList<Question> result= new ArrayList<>();
+        ArrayList<Question> result = new ArrayList<>();
         try (FileReader reader = new FileReader("json/questionsjson.json")) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
-            JSONObject obj2=(JSONObject) obj;
+            JSONObject obj2 = (JSONObject) obj;
             JSONArray arr = (JSONArray) obj2.get("questions");
             Iterator<Object> iterator = arr.iterator();
             while (iterator.hasNext()) {
                 JSONObject object = (JSONObject) iterator.next();
-                ArrayList<String>answers= (JSONArray)object.get("answers");
-                result.add( new Question((String)object.get("question"),answers,(String)object.get("correct_ans") ,(String)object.get("level") ,(String)object.get("team") ));
+                ArrayList<String> answers = (JSONArray) object.get("answers");
+                result.add(new Question((String) object.get("question"), answers, (String) object.get("correct_ans"), QuestionLevel.valueOf((String) object.get("level")), (String) object.get("team")));
             }
             return result;
 
@@ -120,18 +123,16 @@ public class SysData {
         }
     }
 
-    public void writeQuestionTojson(){
+    public void writeQuestionTojson() {
         JSONObject jObject = new JSONObject();
-        try
-        {
+        try {
             JSONArray jArray = new JSONArray();
-            for (Question Q : questions)
-            {
+            for (Question Q : questions) {
                 JSONObject Question = new JSONObject();
                 Question.put("question", Q.getQuestion());
-                JSONArray array= new JSONArray();
+                JSONArray array = new JSONArray();
                 array.add(Q.getAnswers());
-                Question.put("answers",array);
+                Question.put("answers", array);
                 Question.put("correct_ans", Q.getCorrectAns());
                 Question.put("level", Q.getLevel());
                 Question.put("team", Q.getTeam());
@@ -142,20 +143,21 @@ public class SysData {
 
         } catch (IOException e) {
             e.printStackTrace();
-    } }
+        }
+    }
 
     public ArrayList<Game> readHistoryFromJson() {
         JSONParser jsonParser = new JSONParser();
-        ArrayList<Game> result= new ArrayList<>();
+        ArrayList<Game> result = new ArrayList<>();
         try (FileReader reader = new FileReader("json/history.json")) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
-            JSONObject obj2=(JSONObject) obj;
+            JSONObject obj2 = (JSONObject) obj;
             JSONArray arr = (JSONArray) obj2.get("history");
             Iterator<Object> iterator = arr.iterator();
             while (iterator.hasNext()) {
                 JSONObject object = (JSONObject) iterator.next();
-                result.add( new Game((String)object.get("playerId"),(int)(long)object.get("score"),(int)(long)object.get("numOfSouls") ,(String)object.get("date") ,(String)object.get("durationOfGame") ));
+                result.add(new Game(getPlayerByID((String) object.get("playerId")), (int) (long) object.get("score"), (int) (long) object.get("numOfSouls"), (String) object.get("date"), (String) object.get("durationOfGame")));
             }
             return result;
 
@@ -168,18 +170,18 @@ public class SysData {
         } catch (ParseException e) {
             e.printStackTrace();
             return null;
-        }}
-    public void writeHistoryTojson(){
+        }
+    }
+
+    public void writeHistoryTojson() {
         JSONObject jObject = new JSONObject();
-        try
-        {
+        try {
             JSONArray jArray = new JSONArray();
-            for (Game h : history)
-            {
+            for (Game h : history) {
                 JSONObject play = new JSONObject();
-                play.put("playerId",h.getPlayerId());
-                play.put("score",h.getScore());
-                play.put("numOfSouls",h.getNumOfSouls());
+                play.put("playerId", h.getPlayer());
+                play.put("score", h.getScore());
+                play.put("numOfSouls", h.getNumOfSouls());
                 play.put("date", h.getDate());
                 play.put("durationOfGame", h.getDurationOfGame());
                 jArray.add(play);
@@ -189,27 +191,28 @@ public class SysData {
 
         } catch (IOException e) {
             e.printStackTrace();
-        } }
+        }
+    }
 
 
     public ArrayList<Player> readPlayerFromJson() {
         JSONParser jsonParser = new JSONParser();
-        ArrayList<Player> result= new ArrayList<>();
+        ArrayList<Player> result = new ArrayList<>();
         try (FileReader reader = new FileReader("json/players.json")) {
             //Read JSON file
             Object obj = jsonParser.parse(reader);
-            JSONObject obj2=(JSONObject) obj;
+            JSONObject obj2 = (JSONObject) obj;
             JSONArray arr = (JSONArray) obj2.get("players");
             Iterator<Object> iterator = arr.iterator();
             while (iterator.hasNext()) {
                 JSONObject object = (JSONObject) iterator.next();
-                String dateStr = (String)object.get("dateOfBirth");
+                String dateStr = (String) object.get("dateOfBirth");
                 SimpleDateFormat sdf = new SimpleDateFormat("EE MMM dd HH:mm:ss z yyyy",
                         Locale.ENGLISH);
-              Date birthDate = new java.util.Date(sdf.parse(dateStr).getTime());
-              long points=(long)object.get("maxPoints");
-                result.add( new Player((String)object.get("personID"),(String)object.get("firstName"),(String)object.get("surName") , birthDate,(String)object.get("phone"),
-                (String)object.get("email"),(String)object.get("password"),(int)points ));
+                Date birthDate = new java.util.Date(sdf.parse(dateStr).getTime());
+                long points = (long) object.get("maxPoints");
+                result.add(new Player((String) object.get("personID"), (String) object.get("firstName"), (String) object.get("surName"), birthDate, (String) object.get("phone"),
+                        (String) object.get("email"), (String) object.get("password"), (int) points));
             }
             return result;
 
@@ -227,16 +230,15 @@ public class SysData {
             return null;
         }
     }
-    public void writePlayerTojson(){
+
+    public void writePlayerTojson() {
         JSONObject jObject = new JSONObject();
-        try
-        {
+        try {
             JSONArray jArray = new JSONArray();
-            for (Player p : players)
-            {
+            for (Player p : players) {
                 JSONObject play = new JSONObject();
                 play.put("personID", p.getPersonID());
-                play.put("firstName",p.getFirstName());
+                play.put("firstName", p.getFirstName());
                 play.put("surName", p.getSurName());
                 play.put("dateOfBirth", p.getDateOfBirth().toString());
                 play.put("phone", p.getPhone());
@@ -250,11 +252,12 @@ public class SysData {
 
         } catch (IOException e) {
             e.printStackTrace();
-        } }
+        }
+    }
 
 
 
-   public void InsertToJson(Question Q){
+   /* public void InsertToJson(Question Q){
         JSONParser jsonParser = new JSONParser();
 
         try {
@@ -318,16 +321,24 @@ public class SysData {
         }}
 
 
-        //public void UpdateToJson(String Question,ArrayList<String> answers,String corrent_ans,String level , String Team){
-         //Question temp=null;
-         //for(Question Q : questions){
-         //    if(Q.getQuestion().equals(Question)){
-              //   temp=Q;
-           //  } }
+        public void UpdateToJson(String Question,ArrayList<String> answers,String corrent_ans,String level , String Team){
+         Question temp=null;
+         for(Question Q : questions){
+             if(Q.getQuestion().equals(Question)){
+                 temp=Q;
+             } }
+          Q.S
 
 
+        }*/
+
+    public Player getPlayerByID(String id) {
+        for (Player p : players
+        ) {
+            if (p.getPersonID().equals(id))
+                return p;
 
         }
-
-
-
+        return null;
+    }
+}

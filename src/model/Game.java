@@ -6,19 +6,19 @@ import java.util.Objects;
  *  Game class is made for game History
  */
 public class Game {
-    String playerId;
+    Player player;
     int score;
     int numOfSouls;
     String date;
     String durationOfGame;
     Snake snake;
 
-    public String getPlayerId() {
-        return playerId;
+    public Player getPlayer() {
+        return player;
     }
 
-    public void setPlayerId(String playerId) {
-        this.playerId = playerId;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public int getScore() {
@@ -53,8 +53,8 @@ public class Game {
         this.durationOfGame = durationOfGame;
     }
 
-    public Game(String playerId, int score, int numOfSouls, String date, String durationOfGame) {
-        this.playerId = playerId;
+    public Game(Player player, int score, int numOfSouls, String date, String durationOfGame) {
+        this.player = player;
         this.score = score;
         this.numOfSouls = numOfSouls;
         this.date = date;
@@ -77,7 +77,7 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "playerId='" + playerId + '\'' +
+                "playerId='" + player + '\'' +
                 ", score=" + score +
                 ", numOfSouls=" + numOfSouls +
                 ", date='" + date + '\'' +
@@ -92,13 +92,13 @@ public class Game {
         Game game = (Game) o;
         return score == game.score &&
                 numOfSouls == game.numOfSouls &&
-                Objects.equals(playerId, game.playerId) &&
+                Objects.equals(player, game.player) &&
                 Objects.equals(date, game.date) &&
                 Objects.equals(durationOfGame, game.durationOfGame);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(playerId, score, numOfSouls, date, durationOfGame);
+        return Objects.hash(player, score, numOfSouls, date, durationOfGame);
     }
 }
