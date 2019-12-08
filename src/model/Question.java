@@ -14,7 +14,7 @@ public class Question implements Serializable, BoardObject {
     private String question;
     private ArrayList<String> answers = null;
     private String correctAns;
-    private String level;
+    private QuestionLevel level;
     private String team;
     private final static long serialVersionUID = 2895261579048435587L;
 
@@ -31,7 +31,7 @@ public class Question implements Serializable, BoardObject {
      * @param team
      * @param correctAns
      */
-    public Question(String question, ArrayList<String> answers, String correctAns, String level, String team) {
+    public Question(String question, ArrayList<String> answers, String correctAns, QuestionLevel level, String team) {
         super();
         this.question = question;
         this.answers = answers;
@@ -79,17 +79,12 @@ public class Question implements Serializable, BoardObject {
         return this;
     }
 
-    public String getLevel() {
+    public QuestionLevel getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(QuestionLevel level) {
         this.level = level;
-    }
-
-    public Question withLevel(String level) {
-        this.level = level;
-        return this;
     }
 
     public String getTeam() {
@@ -114,11 +109,11 @@ public class Question implements Serializable, BoardObject {
     @Override
     public void addPoints() {
         switch (level) {
-            case "1":
+            case ONE:
                 SysData.game.addToSnakeLength(Consts.CorrectEasyQuestionPoints);
-            case "2":
+            case TWO:
                 SysData.game.addToSnakeLength(Consts.CorrectMediumQuestionPoints);
-            case "3":
+            case THREE:
                 SysData.game.addToSnakeLength(Consts.CorrectHardQuestionPoints);
         }
     }
@@ -126,11 +121,11 @@ public class Question implements Serializable, BoardObject {
     @Override
     public void removePoints() {
         switch (level) {
-            case "1":
+            case ONE:
                 SysData.game.addToSnakeLength(Consts.WrongEasyQuestionPoints);
-            case "2":
+            case TWO:
                 SysData.game.addToSnakeLength(Consts.WrongMediumQuestionPoints);
-            case "3":
+            case THREE:
                 SysData.game.addToSnakeLength(Consts.WrongHardQuestionPoints);
         }
     }
