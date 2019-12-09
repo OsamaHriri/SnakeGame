@@ -49,8 +49,8 @@ public class Board {
 	/**
 	 * Default constructor of board class to initialize starting variables
 	 */
-	public Board() { 
-		
+	public Board() {
+
 
 		fruits = new ArrayList<>();
 
@@ -68,45 +68,7 @@ public class Board {
 	 * Method to check if an collision occurred, either of the snake head with it's body or with an obstacle on the board
 	 * @return Returns the finished state of game
 	 */
-	public GameState checkCollision() {
-		
-		int headX, headY, helpX, helpY;
-		
-		headX = head.getX();
-		headY = head.getY();
-		
-		// checks if snake hit itself
-		for(int i = 1; i < snake.getSize(); ++i) {
-			
-			helpX = snake.getBodyPart(i).getX();
-			helpY = snake.getBodyPart(i).getY();
-			
-			if(helpX == headX && helpY == headY) {
-				highscore = score;
-				reset();
-				return GameState.Finished;
-			}
-		}
-		/*
-		// checks if snake hit obstacle
-		if(!superState) { // check when snake isn't immune - didn't eat super fruit
-			
-			for(int i = 0; i < obstacles.size(); ++i) {
-				
-				helpX = obstacles.get(i).getX();
-				helpY = obstacles.get(i).getY();
-				
-				if(helpX == headX && helpY == headY) {
-					highscore = score;
-					reset();
-					return GameState.Finished;
-				}
-			}
-		}
-		*/
-		return Controller.getState();
-	}
-	
+
 	/**
 	 * Method called in controller to update the state of obstacles in the game
 
@@ -275,9 +237,6 @@ public class Board {
 			foodY = place[1];
 
 			addFruit(foodX, foodY);
-
-		
-
 		}
 	}
 	
@@ -290,12 +249,13 @@ public class Board {
 		int []point = new int[2];
 		
 		int helpX, helpY, foodX = 0, foodY = 0;
-		boolean helpS;	// for Snake and Obstacles
+		boolean helpS,helpO;	// for Snake and Obstacles
 		boolean collision = true;
-		helpS =  false;
-		while(!helpS) {
+		ArrayList<Obstacle> obstacles = Controller.getInstance().getObstacles();
+
+		while(collision) {
 				
-			helpS =  false;
+			helpS =helpO= false;
 			foodX = (rand.nextInt(BWIDTH)*GameObject.SIZE)+GameObject.SIZE/2;
 			foodY = (rand.nextInt(BHEIGHT)*GameObject.SIZE)+GameObject.SIZE/2;
 				
@@ -312,13 +272,10 @@ public class Board {
 					helpS = true;
 				}
 			}
-			/*
+
 			if(helpS) {
 
-				if(obstacles.size() == 0) {
-					helpO = true;
-				}
-				else {
+
 
 					for(int i = 0; i < obstacles.size(); ++i) {
 
@@ -333,11 +290,11 @@ public class Board {
 							helpO = true;
 						}
 					}
-				}
+
 				if(helpO) {
 					collision = false;
 				}
-			}	*/
+			}
 		}
 		point[0] = foodX;
 		point[1] = foodY;
