@@ -137,6 +137,7 @@ public class QManagement implements Initializable {
             String UpDateThisValue = ComboChooseQuestion.getValue();
             if (UpDateThisValue != null) {
                 if (SysData.getInstance().ifExists(UpDateThisValue)) {
+                    System.out.println("nooo");
                     Question UpdateThisQ = null;
                     for (Question Q : SysData.getInstance().getQuestions()) {
                         if (Q.getQuestion().equals(UpDateThisValue)) {
@@ -145,7 +146,6 @@ public class QManagement implements Initializable {
                     }
                     if (UpdateThisQ != null) {
                         ArrayList<String> UpdatedAnswers = new ArrayList<>();
-
                         int CorrectAns = ComboUpdateCorrectAns.getValue();
                         String GetTeamValue = ComboUpdateTeam.getValue();
                         String GetLevelValue = ComboUpdateLevel.getValue();
@@ -155,13 +155,13 @@ public class QManagement implements Initializable {
                         String UpdateA3 = UpdateAnswer3.getText();
                         String UpdateA4 = UpdateAnswer4.getText();
                         if (UpdateBody != "" && UpdateA1!= "" && UpdateA2 != ""  && UpdateA3 != "" && UpdateA4 != "" && GetTeamValue != null && GetLevelValue != "" && CorrectAns != 0)
-                            UpdatedAnswers.add(UpdateA1);
+
+                        UpdatedAnswers.add(UpdateA1);
                         UpdatedAnswers.add(UpdateA2);
                         UpdatedAnswers.add(UpdateA3);
                         UpdatedAnswers.add(UpdateA4);
                         String CorrectAnswer = UpdatedAnswers.get(CorrectAns);
-                        if (SysData.getInstance().updateQuestion(UpDateThisValue, UpdateBody, UpdatedAnswers, CorrectAnswer, GetLevelValue, GetTeamValue))
-                            System.out.print("zzzz");
+                        if (SysData.getInstance().updateQuestion(UpDateThisValue, UpdateBody, UpdatedAnswers, CorrectAnswer, GetLevelValue, GetTeamValue));
 
                     }
 
@@ -191,6 +191,8 @@ public class QManagement implements Initializable {
                                 System.out.print("yesright");
                                 if(SysData.getInstance().deleteQuestion(OnDeleteQ))
                                 System.out.println("loo");
+                                System.out.println("after delete"+SysData.getInstance().getQuestions());
+
 
 
 

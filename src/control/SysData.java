@@ -76,9 +76,15 @@ public class SysData {
 
     public boolean deleteQuestion(String ID) {
         boolean temp = ifExists(ID);
+        Question DeleteQ=null;
         if (!temp) return false;
         else {
-            questions.remove(temp);
+                for(Question Q:getQuestions())
+                {
+                    if(Q.getQuestion().equals(ID))
+                        DeleteQ=Q;
+                }
+            questions.remove(DeleteQ);
             return true;
         }
     }
@@ -91,17 +97,16 @@ public class SysData {
     }
 
     public boolean updateQuestion(String question, String Updated, ArrayList<String> answer, String correctAns, String level, String team) {
-            System.out.print("ppp");
-        if (ifExists(Updated) != false && question.equals(Updated)) return false;
-        System.out.print("ooo");
-        boolean temp = ifExists(question);
-        if(temp) {
-            if (deleteQuestion(question) != true) return false;
-            System.out.print("zzzzqqq");
+
+        if (!ifExists(Updated) ) return false;
+
+        if (!deleteQuestion(question)) return false;
+
             questions.add(new Question(Updated, answer, correctAns, QuestionLevel.valueOf(level), team));
             return true;
-        }else
-            return false;
+
+
+
     }
 
     public ArrayList<Question> readQuestionFromJson() {
