@@ -64,35 +64,49 @@ public class SysData {
         return players;
     }
 
-    public Question ifExists(String ID) {
+    public boolean  ifExists(String ID) {
         Question temp = null;
         for (Question d : questions) {
             if (d.getQuestion().equals(ID))
                 temp = d;
+            if(temp!=null) return true;
         }
-        return temp;
+        return false ;
     }
 
     public boolean deleteQuestion(String ID) {
-        Question temp = ifExists(ID);
-        if (temp == null) return false;
+        boolean temp = ifExists(ID);
+        Question DeleteQ=null;
+        if (!temp) return false;
         else {
-            questions.remove(temp);
+                for(Question Q:getQuestions())
+                {
+                    if(Q.getQuestion().equals(ID))
+                        DeleteQ=Q;
+                }
+            questions.remove(DeleteQ);
             return true;
         }
     }
 
     public boolean insertQuestion(Question Q) {
-        Question temp = ifExists(Q.getQuestion());
-        if (temp != null) return false;
-        else return questions.add(Q);
+        boolean temp = ifExists(Q.getQuestion());
+        if (temp)
+            return false;
+        else return (questions.add(Q));
     }
 
     public boolean updateQuestion(String question, String Updated, ArrayList<String> answer, String correctAns, String level, String team) {
-        if (ifExists(Updated) != null && !question.equals(Updated)) return false;
-        Question temp = ifExists(question);
-        if (deleteQuestion(question) != true) return false;
-        return questions.add(new Question(Updated, answer, correctAns, QuestionLevel.valueOf(level), team));
+
+        if (!ifExists(Updated) ) return false;
+
+        if (!deleteQuestion(question)) return false;
+
+            questions.add(new Question(Updated, answer, correctAns, QuestionLevel.valueOf(level), team));
+            return true;
+
+
+
     }
 
     public ArrayList<Question> readQuestionFromJson() {
