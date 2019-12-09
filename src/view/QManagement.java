@@ -136,7 +136,6 @@ public class QManagement implements Initializable {
             System.out.println("x");
             String UpDateThisValue = ComboChooseQuestion.getValue();
             if (UpDateThisValue != null) {
-
                 if (SysData.getInstance().ifExists(UpDateThisValue)) {
                     Question UpdateThisQ = null;
                     for (Question Q : SysData.getInstance().getQuestions()) {
@@ -144,10 +143,10 @@ public class QManagement implements Initializable {
                             UpdateThisQ = Q;
                         }
                     }
-
-
                     if (UpdateThisQ != null) {
                         ArrayList<String> UpdatedAnswers = new ArrayList<>();
+
+                        int CorrectAns = ComboUpdateCorrectAns.getValue();
                         String GetTeamValue = ComboUpdateTeam.getValue();
                         String GetLevelValue = ComboUpdateLevel.getValue();
                         String UpdateBody = UpdateQuestionBody.getText();
@@ -155,8 +154,6 @@ public class QManagement implements Initializable {
                         String UpdateA2 = UpdateAnswer2.getText();
                         String UpdateA3 = UpdateAnswer3.getText();
                         String UpdateA4 = UpdateAnswer4.getText();
-                        int CorrectAns = ComboUpdateCorrectAns.getValue();
-
                         if (UpdateBody != "" && UpdateA1!= "" && UpdateA2 != ""  && UpdateA3 != "" && UpdateA4 != "" && GetTeamValue != null && GetLevelValue != "" && CorrectAns != 0)
                             UpdatedAnswers.add(UpdateA1);
                         UpdatedAnswers.add(UpdateA2);
@@ -222,24 +219,36 @@ public class QManagement implements Initializable {
                 }
             }
             if (MyQuestion != null) {
-                System.out.println("love");
-
-                ArrayList<String> myAnswers = new ArrayList<>();
-                myAnswers.addAll(MyQuestion.getAnswers());
-                System.out.println(myAnswers);
-                String ans1=myAnswers.get(0);
-                String ans2=myAnswers.get(1);
-                String ans3=myAnswers.get(2);
-                String ans4=myAnswers.get(3);
-                System.out.println(ans1 + ans2 + ans3 + ans4);
-                String Correct = MyQuestion.getCorrectAns();
-                QuestionLevel Level = MyQuestion.getLevel();
-                String team = MyQuestion.getTeam();
-                UpdateAnswer1.setText(ans1);
-                UpdateAnswer2.setText(ans2);
-                UpdateAnswer3.setText(ans3);
-                UpdateAnswer4.setText(ans4);
-                System.out.println(ans1 + ans2 + ans3 + ans4);
+                System.out.println("loe");
+                System.out.println(MyQuestion.getTeam());
+                UpdateQuestionBody.setPromptText(ComboValue);
+                UpdateQuestionBody.setText(ComboValue);
+                ComboUpdateTeam.setValue(MyQuestion.getTeam());
+                ComboUpdateLevel.setValue(MyQuestion.getLevel().toString());
+                UpdateAnswer1.setText(MyQuestion.getAnswers().get(0));
+                UpdateAnswer2.setText(MyQuestion.getAnswers().get(1));
+                UpdateAnswer3.setText(MyQuestion.getAnswers().get(2));
+                UpdateAnswer4.setText(MyQuestion.getAnswers().get(3));
+                ComboUpdateCorrectAns.setValue(new Integer(MyQuestion.getCorrectAns()));
+//                ArrayList<String> myAnswers = new ArrayList<>();
+//                myAnswers.addAll(MyQuestion.getAnswers());
+//                System.out.println(myAnswers);
+//                String ans1=myAnswers.get(0);
+//                UpdateAnswer1.setText(myAnswers.get(1));
+//                UpdateAnswer2.setPromptText(myAnswers.get(2));
+//                String ans2=myAnswers.get(1);
+//                String ans3=myAnswers.get(2);
+//                String ans4=myAnswers.get(3);
+//                System.out.println(ans1 + ans2 + ans3 + ans4);
+//                String Correct = MyQuestion.getCorrectAns();
+//                QuestionLevel Level = MyQuestion.getLevel();
+//                String team = MyQuestion.getTeam();
+//                UpdateAnswer1.setText(ans1);
+//                UpdateAnswer2.setText(ans2);
+//                UpdateAnswer3.setText(ans3);
+//                UpdateAnswer4.setText(ans4);
+//
+//                System.out.println(ans1 + ans2 + ans3 + ans4);
 
 
             }

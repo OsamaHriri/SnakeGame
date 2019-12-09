@@ -135,7 +135,7 @@
                                  </font></TextField>
                               <ComboBox fx:id="ComboUpdateTeam" prefHeight="50.0" prefWidth="200.0" promptText="team" style="-fx-background-radius: 50;" />
                               <ComboBox fx:id="ComboUpdateLevel" prefHeight="50.0" prefWidth="200.0" promptText="level" style="-fx-background-radius: 50;" />
-                              <TextField fx:id="UpdateAnswer1" alignment="CENTER" prefHeight="50.0" prefWidth="200.0" promptText="Answer 1" style="-fx-background-radius: 50;">
+                              <TextField fx:id="UpdateAnswer1" alignment="CENTER" onInputMethodTextChanged="#populateFields" prefHeight="50.0" prefWidth="200.0" promptText="Answer 1" style="-fx-background-radius: 50;">
                                  <font>
                                     <Font size="18.0" />
                                  </font></TextField>
